@@ -1,0 +1,40 @@
+<% layout('layout') %>
+<h1>Add New Course</h1>
+<form action="/course/new" method="POST" class="needs-validation" novalidate>
+    <div class="mb-3">
+        <label class="form-label">Course Name</label>
+        <input type="text" class="form-control" name="courseName" required>
+        <div class="invalid-feedback">Course name is required.</div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <input type="number" class="form-control" name="price" required>
+        <div class="invalid-feedback">Price is required.</div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Duration</label>
+        <input type="text" class="form-control" name="duration" required>
+        <div class="invalid-feedback">Duration is required.</div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Start Date</label>
+        <input type="date" class="form-control" name="courseStartDate" required>
+        <div class="invalid-feedback">Start date is required.</div>
+    </div>
+    <button type="submit" class="btn btn-success">Create Course</button>
+</form>
+<script>
+    (function () {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>
